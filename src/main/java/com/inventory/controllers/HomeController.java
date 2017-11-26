@@ -23,7 +23,7 @@ public class HomeController {
         ModelAndView modelAndView2 = new ModelAndView("dashboard");
 
 
-        if((verifyu == username) && (verifyp == password)){
+        if(!verifyu.equals(username) || !verifyu.equals(username)){
             return modelAndview;
         }
         return modelAndView2;
