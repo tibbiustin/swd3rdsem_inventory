@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form action="#" th:action="@{/storemanager/add_order}" class="form-horizontal" method="post" >
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Supplier name:</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="supplierName"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Beverage name:</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="beverageName"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Quantity:</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="quantity"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" >Price:</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="price"></input>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark" >Add order</button>
+
+</form>
+
+</body>
+</html>
