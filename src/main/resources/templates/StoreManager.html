@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Project</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Store Manager</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#" th:href="@{/storemanager}">Home</a></li>
+            <li><a href="#" th:href="@{storemanager/add}">Add</a></li>
+        </ul>
+    </div>
+</nav>
+
+<body>
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Beverage name</th>
+            <th>Quantity</th>
+            <th>Price/unit</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="beverage: ${beverageList}">
+            <td th:text="${beverage.id}"></td>
+            <td th:text="${beverage.name}"></td>
+            <td th:text="${beverage.quantity}"></td>
+            <td th:text="${beverage.price_per_unit}"></td>
+            <td>
+                <form>
+                    <a th:href="@{/storemanager/edit(id=${beverage.id})}" class="btn btn-info">Edit</a>
+                </form>
+            </td>
+            <td>
+                <form> <a th:href="@{/storemanager/delete(id=${beverage.id})}" class="btn btn-danger">Delete</a>
+                </form>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+
+</body>
+</html>

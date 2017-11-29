@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>courses</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+
+
+</head>
+
+
+<body>
+
+
+    <form  action="/storemanager/saveEdit" th:object="${beverage}" method="post">
+
+        <input type="hidden" id="id" name="id" placeholder="id" th:value="${beverage.id}"></input>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" >Beverage name:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="name" name="name" required="true" th:value="${beverage.name}"></input>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" >Quantity:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="quantity" name="quantity" required="true" th:value="${beverage.quantity}"></input>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" >Price per unit:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="price_per_unit" id="price_per_unit" required="true" th:value="${beverage.price_per_unit}"></input>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark" >Save edited beverage</button>
+    </form>
+
+
+
+</body>
+</html>
