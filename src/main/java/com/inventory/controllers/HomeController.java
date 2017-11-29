@@ -20,7 +20,7 @@ public class HomeController {
     public ModelAndView verifyLogin(@RequestParam String username, @RequestParam String password){
         String verifyu = "admin",verifyp = "1234";
         ModelAndView modelAndview = new ModelAndView("login");
-        ModelAndView modelAndView2 = new ModelAndView("dashboard");
+        ModelAndView modelAndView2 = new ModelAndView("redirect:/storemanager");
 
 
         if(!verifyu.equals(username) || !verifyu.equals(username)){
