@@ -16,7 +16,7 @@ public class CustomerController {
     @Autowired
     BeverageRepository beverageRepo;
 
-    @GetMapping("/customer")
+    @GetMapping("/")
     public ModelAndView doHome() {
         ModelAndView mv = new ModelAndView("index");
         mv.getModel().put("beverageList", beverageRepo.findAll());
