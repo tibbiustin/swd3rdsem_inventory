@@ -2,6 +2,8 @@ package com.inventory.controllers;
 
 import com.inventory.models.Beverage;
 import com.inventory.models.BeverageRepository;
+import com.inventory.models.Order;
+import com.inventory.models.OrderRepository;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +26,20 @@ public class AdminController {
 
     @Autowired
     BeverageRepository beverageRepo;
+    @Autowired
+    OrderRepository orderRepository;
 
     @GetMapping("/storemanager")
     public ModelAndView doHome() {
         ModelAndView mv = new ModelAndView("StoreManager");
         mv.getModel().put("beverageList", beverageRepo.findAll());
+        return mv;
+    }
+
+    @GetMapping("/storemanager/orders")
+    public ModelAndView doOrders() {
+        ModelAndView mv = new ModelAndView("orders");
+        mv.getModel().put("ordersList", orderRepository.findAll());
         return mv;
     }
 
@@ -38,8 +49,6 @@ public class AdminController {
         return mv;
     }
 
-
-
     @PostMapping(value = "/storemanager/add")
     public ModelAndView doSave( @RequestParam(name="name") String name,
                                @RequestParam(name="quantity") float quantity, @RequestParam(name="price_per_unit") float price_per_unit){
@@ -48,6 +57,24 @@ public class AdminController {
         beverageRepo.save(beverage);
         ModelAndView mv = new ModelAndView("redirect:/storemanager");
        return mv;
+
+    }
+
+    @GetMapping(value= "/storemanager/add_order")
+    public ModelAndView addOrder(){
+        ModelAndView mv = new ModelAndView("add_order");
+        return mv;
+    }
+
+    @PostMapping(value = "/storemanager/add_order")
+    public ModelAndView doOrderSave( @RequestParam(name="supplierName") String supplierName,
+                                     @RequestParam(name="beverageName") String beverageName,
+                                @RequestParam(name="quantity") float quantity, @RequestParam(name="price") float price){
+
+        Order order = new Order(supplierName,beverageName ,quantity, price);
+        orderRepository.save(order);
+        ModelAndView mv = new ModelAndView("redirect:/storemanager/orders");
+        return mv;
 
     }
 
