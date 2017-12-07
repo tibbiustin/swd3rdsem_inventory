@@ -12,14 +12,14 @@ public class Beverage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int id;
+    private int id;
 
     @Column(name = "name")
-    public String name;
+    private String name;
     @Column(name = "quantity")
-    public float quantity;
+    private float quantity;
     @Column(name="price_per_unit")
-    public float price_per_unit;
+    private float price_per_unit;
 
     public Beverage(){
 

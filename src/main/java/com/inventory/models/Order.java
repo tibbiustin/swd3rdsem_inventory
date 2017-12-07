@@ -10,16 +10,16 @@ import javax.persistence.*;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int id;
+    private int id;
 
     @Column(name = "supplierName")
-    public String supplierName;
+    private String supplierName;
     @Column(name = "beverageName")
-    public String beverageName;
+    private String beverageName;
     @Column(name = "quantity")
     public float quantity;
     @Column(name="price")
-    public float price;
+    private float price;
 
     public Order() {
 

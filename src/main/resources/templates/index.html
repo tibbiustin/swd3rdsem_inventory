@@ -28,6 +28,13 @@
         <td th:text="${beverage.name}"></td>
         <td th:text="${beverage.quantity}"></td>
         <td th:text="${beverage.price_per_unit}"></td>
+
+        <td>
+            <form>
+                <a th:href="@{/order/add?(id=${beverage.id})}" class="btn btn-info">Buy</a>
+            </form>
+        </td>
+
     </tr>
     </tbody>
 
