@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.inventory.models.DatabaseConnection.getConnection;
 
 /**
  * Created by George Stratulat on 28/11/2017.
@@ -25,8 +24,6 @@ public class AdminController {
     BeverageRepository beverageRepo;
     @Autowired
     OrderRepository orderRepository;
-    @Autowired
-    CustomerOrderRepository customerOrderRepository;
 
     @GetMapping("/storemanager")
     public ModelAndView doHome() {
@@ -72,6 +69,20 @@ public class AdminController {
                                 @RequestParam(name="quantity") float quantity, @RequestParam(name="price") float price){
 
         Order order = new Order(supplierName,beverageName ,quantity, price);
+        Beverage beverage = new Beverage(beverageName, quantity, price);
+               int ok = 0;
+                for (Beverage b: beverageRepo.findAll()) {
+                        if (b.getName().equals(beverage.getName())) {
+                               float q = b.getQuantity() + beverage.getQuantity();
+                                b.setQuantity(q);
+                                beverageRepo.save(b);
+                                ok = 1;
+                            }
+                    }
+                if(ok == 0){
+                        beverageRepo.save(beverage);
+                   }
+
         orderRepository.save(order);
         ModelAndView mv = new ModelAndView("redirect:/storemanager/orders");
         return mv;
